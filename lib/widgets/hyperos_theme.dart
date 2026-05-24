@@ -12,7 +12,7 @@ class HyperOSTheme {
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 1,
-        backgroundColor: Colors.white.withValues(alpha: 0.8),
+        backgroundColor: Colors.white.withOpacity(0.8),
         foregroundColor: scheme.onSurface,
         titleTextStyle: TextStyle(
           color: scheme.onSurface,
@@ -86,7 +86,7 @@ class HyperOSTheme {
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 1,
-        backgroundColor: const Color(0xFF1E1E1E).withValues(alpha: 0.8),
+        backgroundColor: const Color(0xFF1E1E1E).withOpacity(0.8),
         foregroundColor: scheme.onSurface,
         titleTextStyle: TextStyle(
           color: scheme.onSurface,

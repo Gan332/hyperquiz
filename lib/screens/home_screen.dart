@@ -18,13 +18,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+  late final List<Widget> _screens;
 
-  final _screens = const [
-    _HomeTab(),
-    QuestionBankScreen(),
-    StatsScreen(),
-    SettingsScreen(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      _HomeTab(onNavigate: (i) => setState(() => _currentIndex = i)),
+      const QuestionBankScreen(),
+      const StatsScreen(),
+      const SettingsScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _HomeTab extends StatelessWidget {
-  const _HomeTab();
+  final void Function(int)? onNavigate;
+  const _HomeTab({this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
@@ -200,9 +206,7 @@ class _HomeTab extends StatelessWidget {
                     icon: Icons.bar_chart_rounded,
                     label: 'Statistics',
                     color: Colors.teal,
-                    onTap: () {
-                      setState(() => _currentIndex = 2);
-                    },
+                    onTap: () => onNavigate?.call(2),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -211,9 +215,7 @@ class _HomeTab extends StatelessWidget {
                     icon: Icons.palette_outlined,
                     label: 'Theme',
                     color: Colors.purple,
-                    onTap: () {
-                      setState(() => _currentIndex = 3);
-                    },
+                    onTap: () => onNavigate?.call(3),
                   ),
                 ),
               ],

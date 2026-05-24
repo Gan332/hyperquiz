@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:provider/provider.dart';
 import '../models/question.dart';
+import '../models/quiz_record.dart';
 import '../providers/app_provider.dart';
 import '../widgets/animations.dart';
 
