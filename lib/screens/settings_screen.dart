@@ -67,7 +67,7 @@ class SettingsScreen extends StatelessWidget {
                             boxShadow: isSelected
                                 ? [
                                     BoxShadow(
-                                      color: color.withValues(alpha: 0.4),
+                                      color: color.withOpacity(0.4),
                                       blurRadius: 8,
                                       spreadRadius: 1,
                                     )
@@ -316,13 +316,13 @@ class SettingsScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          SizedBox(width: 44, child: Text(label, style: TextStyle(fontSize: 12))),
+          SizedBox(width: 44, child: Text(label, style: const TextStyle(fontSize: 12))),
           Expanded(
             child: Slider(value: value, onChanged: onChanged, activeColor: color),
           ),
           SizedBox(
             width: 32,
-            child: Text('${(value * 255).round()}', style: TextStyle(fontSize: 11)),
+            child: Text('${(value * 255).round()}', style: const TextStyle(fontSize: 11)),
           ),
         ],
       ),

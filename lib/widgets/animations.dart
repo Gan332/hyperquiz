@@ -7,7 +7,7 @@ class HyperOSPageRoute<T> extends PageRouteBuilder<T> {
       : super(
           pageBuilder: (context, animation, secondaryAnimation) => child,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            final curve = Curves.easeOutCubic;
+            const curve = Curves.easeOutCubic;
             final curved = CurvedAnimation(parent: animation, curve: curve);
 
             return SlideTransition(
@@ -26,18 +26,15 @@ class HyperOSPageRoute<T> extends PageRouteBuilder<T> {
 }
 
 class _AnimBuilder extends AnimatedWidget {
-  final Widget? child;
-  final Widget Function(BuildContext context, Widget? child) builder;
+  final Widget Function(BuildContext context) builder;
 
   const _AnimBuilder({
-    super.key,
     required super.listenable,
     required this.builder,
-    this.child,
   });
 
   @override
-  Widget build(BuildContext context) => builder(context, child);
+  Widget build(BuildContext context) => builder(context);
 }
 
 class StaggeredFadeIn extends StatefulWidget {
@@ -143,7 +140,7 @@ class _ScaleOnTapState extends State<ScaleOnTap>
   Widget build(BuildContext context) {
     return _AnimBuilder(
       listenable: _scaleAnim,
-      builder: (context, _) {
+      builder: (context) {
         return GestureDetector(
           onTapDown: _onTapDown,
           onTapUp: _onTapUp,
@@ -205,7 +202,7 @@ class _AnimatedScoreRingState extends State<AnimatedScoreRing>
 
     return _AnimBuilder(
       listenable: _anim,
-      builder: (context, _) {
+      builder: (context) {
         return SizedBox(
           width: widget.size,
           height: widget.size,
@@ -218,7 +215,7 @@ class _AnimatedScoreRingState extends State<AnimatedScoreRing>
                 child: CircularProgressIndicator(
                   value: _anim.value,
                   strokeWidth: 8,
-                  backgroundColor: color.withValues(alpha: 0.1),
+                  backgroundColor: color.withOpacity(0.1),
                   valueColor: AlwaysStoppedAnimation<Color>(color),
                   strokeCap: StrokeCap.round,
                 ),
@@ -231,7 +228,7 @@ class _AnimatedScoreRingState extends State<AnimatedScoreRing>
                       begin: 0,
                       end: widget.score,
                     ).animate(_anim),
-                    builder: (context, _) {
+                    builder: (context) {
                       final displayScore =
                           (widget.score * _anim.value).toInt();
                       return Text(

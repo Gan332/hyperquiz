@@ -137,7 +137,7 @@ class _StatsScreenState extends State<StatsScreen> {
                       ],
                       selected: {_selectedDays},
                       onSelectionChanged: (v) => setState(() => _selectedDays = v.first),
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                         visualDensity: VisualDensity.compact,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
@@ -283,7 +283,7 @@ class _StatsScreenState extends State<StatsScreen> {
               ),
             ),
             const SizedBox(height: 12),
-            ...records.take(10).asMap().entries.map((entry) {
+            ...records.take(10).toList().asMap().entries.map((entry) {
               return StaggeredFadeIn(
                 index: 7 + entry.key,
                 child: Card(
@@ -294,7 +294,7 @@ class _StatsScreenState extends State<StatsScreen> {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: (entry.value.score >= 60 ? Colors.green : Colors.orange).withValues(alpha: 0.15),
+                        color: (entry.value.score >= 60 ? Colors.green : Colors.orange).withOpacity(0.15),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(

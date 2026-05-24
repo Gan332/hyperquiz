@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/question.dart';
-import '../models/quiz_record.dart' as model;
 import '../providers/app_provider.dart';
 import '../widgets/animations.dart';
 
@@ -143,7 +142,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.play_circle_outline, size: 80, color: theme.colorScheme.primary.withValues(alpha: 0.5)),
+              Icon(Icons.play_circle_outline, size: 80, color: theme.colorScheme.primary.withOpacity(0.5)),
               const SizedBox(height: 24),
               Text(
                 'Ready to practice?',
@@ -248,7 +247,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
-                              color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                              color: theme.colorScheme.primary.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text(q.subject, style: TextStyle(fontSize: 11, color: theme.colorScheme.primary)),
@@ -473,18 +472,15 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 ],
               ),
               const SizedBox(height: 40),
-              ScaleOnTap(
-                onTap: () {
+              FilledButton.icon(
+                onPressed: () {
                   setState(() {
                     _sessionQuestions = [];
                     _showResult = false;
                   });
                 },
-                child: FilledButton.icon(
-                  onPressed: null,
-                  icon: const Icon(Icons.replay),
-                  label: const Text('Practice Again'),
-                ),
+                icon: const Icon(Icons.replay),
+                label: const Text('Practice Again'),
               ),
               const SizedBox(height: 12),
               TextButton(

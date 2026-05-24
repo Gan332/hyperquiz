@@ -146,8 +146,9 @@ class NativeBridge {
 
   String? _readAndFree(Pointer<Utf8>? ptr) {
     if (ptr == nullptr) return null;
-    final result = ptr.toDartString();
-    _freeString(ptr);
+    final p = ptr;
+    final result = p.toDartString();
+    _freeString(p);
     return result;
   }
 

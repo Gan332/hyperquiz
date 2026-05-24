@@ -27,79 +27,81 @@ class ScoreLineChart extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-      child: LineChart(
-        LineChartData(
-          gridData: FlGridData(
-            show: true,
-            drawVerticalLine: false,
-            horizontalInterval: maxVal / 4,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: Colors.grey.withValues(alpha: 0.15),
-              strokeWidth: 1,
-            ),
-          ),
-          titlesData: FlTitlesData(
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 28,
-                getTitlesWidget: (value, meta) {
-                  final idx = value.toInt();
-                  if (idx < 0 || idx >= dailyStats.length) {
-                    return const SizedBox.shrink();
-                  }
-                  final date = dailyStats[idx].date;
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                      date.substring(5, 10),
-                      style: TextStyle(fontSize: 10, color: theme.textTheme.bodySmall?.color),
-                    ),
-                  );
-                },
-              ),
-            ),
-            leftTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 36,
-                getTitlesWidget: (value, meta) => Text(
-                  value.toInt().toString(),
-                  style: TextStyle(fontSize: 10, color: theme.textTheme.bodySmall?.color),
-                ),
-              ),
-            ),
-            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          ),
-          borderData: FlBorderData(show: false),
-          lineBarsData: [
-            LineChartBarData(
-              spots: dailyStats.asMap().entries.map((e) {
-                return FlSpot(e.key.toDouble(), e.value.correctCount.toDouble());
-              }).toList(),
-              isCurved: true,
-              color: theme.colorScheme.primary,
-              barWidth: 2.5,
-              dotData: FlDotData(
-                show: true,
-                getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
-                  radius: 4,
-                  color: theme.colorScheme.primary,
-                  strokeWidth: 2,
-                  strokeColor: theme.colorScheme.surface,
-                ),
-              ),
-              belowBarData: BarAreaData(
-                show: true,
-                color: theme.colorScheme.primary.withValues(alpha: 0.08),
-              ),
-            ),
-          ],
-          minY: 0,
-          maxY: maxVal,
-        ),
+      child: SizedBox(
         height: 200,
+        child: LineChart(
+          LineChartData(
+            gridData: FlGridData(
+              show: true,
+              drawVerticalLine: false,
+              horizontalInterval: maxVal / 4,
+              getDrawingHorizontalLine: (value) => FlLine(
+                color: Colors.grey.withOpacity(0.15),
+                strokeWidth: 1,
+              ),
+            ),
+            titlesData: FlTitlesData(
+              bottomTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  reservedSize: 28,
+                  getTitlesWidget: (value, meta) {
+                    final idx = value.toInt();
+                    if (idx < 0 || idx >= dailyStats.length) {
+                      return const SizedBox.shrink();
+                    }
+                    final date = dailyStats[idx].date;
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        date.substring(5, 10),
+                        style: TextStyle(fontSize: 10, color: theme.textTheme.bodySmall?.color),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              leftTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  reservedSize: 36,
+                  getTitlesWidget: (value, meta) => Text(
+                    value.toInt().toString(),
+                    style: TextStyle(fontSize: 10, color: theme.textTheme.bodySmall?.color),
+                  ),
+                ),
+              ),
+              topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            ),
+            borderData: FlBorderData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                spots: dailyStats.asMap().entries.map((e) {
+                  return FlSpot(e.key.toDouble(), e.value.correctCount.toDouble());
+                }).toList(),
+                isCurved: true,
+                color: theme.colorScheme.primary,
+                barWidth: 2.5,
+                dotData: FlDotData(
+                  show: true,
+                  getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                    radius: 4,
+                    color: theme.colorScheme.primary,
+                    strokeWidth: 2,
+                    strokeColor: theme.colorScheme.surface,
+                  ),
+                ),
+                belowBarData: BarAreaData(
+                  show: true,
+                  color: theme.colorScheme.primary.withOpacity(0.08),
+                ),
+              ),
+            ],
+            minY: 0,
+            maxY: maxVal,
+          ),
+        ),
       ),
     );
   }

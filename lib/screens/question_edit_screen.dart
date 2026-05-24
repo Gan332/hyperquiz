@@ -295,7 +295,7 @@ class _QuestionEditScreenState extends State<QuestionEditScreen> {
           _showError('Please provide at least 2 options');
           return;
         }
-        answer = options.where((_, i) => _answerChecks[i]).toList();
+        answer = options.asMap().entries.where((e) => _answerChecks[e.key]).map((e) => e.value).toList();
         if (answer.isEmpty) {
           _showError('Please select at least one correct answer');
           return;

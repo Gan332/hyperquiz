@@ -14,11 +14,9 @@ class QuestionBankScreen extends StatefulWidget {
 }
 
 class _QuestionBankScreenState extends State<QuestionBankScreen> {
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
   String _searchQuery = '';
   String? _subjectFilter;
   QuestionType? _typeFilter;
-  bool _listInitialized = false;
 
   @override
   Widget build(BuildContext context) {
@@ -227,7 +225,7 @@ class _FilterChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.grey.withValues(alpha: 0.1),
+        color: Colors.grey.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
       ),
       child: DropdownButtonHideUnderline(

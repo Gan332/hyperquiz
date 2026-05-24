@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart';
 import '../models/question.dart';
-import '../models/quiz_record.dart';
 import '../providers/app_provider.dart';
 import '../widgets/animations.dart';
 
@@ -30,7 +28,7 @@ class ImportExportScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                        color: theme.colorScheme.primary.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Icon(
@@ -72,7 +70,7 @@ class ImportExportScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.green.withValues(alpha: 0.1),
+                        color: Colors.green.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(Icons.file_upload_outlined, size: 48, color: Colors.green),

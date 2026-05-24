@@ -1,3 +1,5 @@
+import 'question.dart';
+
 class AnswerDetail {
   final int questionId;
   final List<String> userAnswer;
@@ -139,8 +141,6 @@ class DailyStats {
         totalTimeSecs: json['total_time_secs'] as int? ?? 0,
       );
 }
-
-import 'question.dart';
 
 class ImportExportData {
   final String version;

@@ -28,7 +28,7 @@ class StatCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: c.withValues(alpha: 0.1),
+                color: c.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, size: 20, color: c),
@@ -45,7 +45,7 @@ class StatCard extends StatelessWidget {
             Text(
               label,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.7),
+                color: theme.textTheme.bodySmall?.color?.withOpacity(0.7),
               ),
             ),
           ],

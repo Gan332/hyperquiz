@@ -21,13 +21,13 @@ class HyperOSTheme {
           letterSpacing: 0.2,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
         color: Colors.white,
-        surfaceTintColor: scheme.primary.withValues(alpha: 0.05),
+        surfaceTintColor: scheme.primary.withOpacity(0.05),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 2,
@@ -63,14 +63,14 @@ class HyperOSTheme {
         unselectedItemColor: Colors.grey[500],
         backgroundColor: Colors.white,
       ),
-      dialogTheme: DialogThemeData(
+      dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
       ),
-      sliderTheme: SliderThemeData(
-        overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
-        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
+      sliderTheme: const SliderThemeData(
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
       ),
     );
   }
@@ -95,13 +95,13 @@ class HyperOSTheme {
           letterSpacing: 0.2,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
         color: const Color(0xFF1E1E1E),
-        surfaceTintColor: scheme.primary.withValues(alpha: 0.08),
+        surfaceTintColor: scheme.primary.withOpacity(0.08),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 2,
@@ -137,14 +137,14 @@ class HyperOSTheme {
         unselectedItemColor: Colors.grey[600],
         backgroundColor: const Color(0xFF1E1E1E),
       ),
-      dialogTheme: DialogThemeData(
+      dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
       ),
-      sliderTheme: SliderThemeData(
-        overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
-        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
+      sliderTheme: const SliderThemeData(
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
       ),
     );
   }

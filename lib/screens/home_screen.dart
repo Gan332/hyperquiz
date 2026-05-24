@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
 import '../widgets/animations.dart';
 import 'question_bank_screen.dart';
+import 'question_edit_screen.dart';
 import 'practice_screen.dart';
 import 'stats_screen.dart';
 import 'import_export_screen.dart';
@@ -27,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -89,7 +89,7 @@ class _HomeTab extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                            color: theme.colorScheme.primary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(14),
                           ),
                           child: Icon(
@@ -201,8 +201,7 @@ class _HomeTab extends StatelessWidget {
                     label: 'Statistics',
                     color: Colors.teal,
                     onTap: () {
-                      final home = context.findAncestorStateOfType<_HomeScreenState>();
-                      home?.setState(() => home._currentIndex = 2);
+                      setState(() => _currentIndex = 2);
                     },
                   ),
                 ),
@@ -213,8 +212,7 @@ class _HomeTab extends StatelessWidget {
                     label: 'Theme',
                     color: Colors.purple,
                     onTap: () {
-                      final home = context.findAncestorStateOfType<_HomeScreenState>();
-                      home?.setState(() => home._currentIndex = 3);
+                      setState(() => _currentIndex = 3);
                     },
                   ),
                 ),
@@ -250,7 +248,7 @@ class _HomeTab extends StatelessWidget {
               ),
             )
           else
-            ...app.records.take(5).asMap().entries.map((entry) {
+            ...app.records.take(5).toList().asMap().entries.map((entry) {
               return StaggeredFadeIn(
                 index: 5 + entry.key,
                 child: _RecordItem(record: entry.value),
@@ -332,7 +330,7 @@ class _ActionCard extends StatelessWidget {
             children: [
               Icon(icon, color: color, size: 32),
               const SizedBox(height: 8),
-              Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+              Text(label, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
             ],
           ),
         ),
@@ -356,7 +354,7 @@ class _RecordItem extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: (record.score >= 60 ? Colors.green : Colors.orange).withValues(alpha: 0.15),
+            color: (record.score >= 60 ? Colors.green : Colors.orange).withOpacity(0.15),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
