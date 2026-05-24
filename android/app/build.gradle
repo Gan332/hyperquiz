@@ -51,6 +51,12 @@ android {
         }
     }
 
+    splits {
+        abi {
+            enable false
+        }
+    }
+
     buildTypes {
         release {
             signingConfig signingConfigs.debug
