@@ -22,10 +22,15 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def flutterCompileSdk = flutter.compileSdkVersion ?: 34
+def flutterMinSdk = flutter.minSdkVersion ?: 21
+def flutterTargetSdk = flutter.targetSdkVersion ?: 34
+def flutterNdkVersion = flutter.ndkVersion ?: '23.1.7779620'
+
 android {
     namespace "com.quizapp.quiz_app"
-    compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdk flutterCompileSdk
+    ndkVersion flutterNdkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,8 +47,8 @@ android {
 
     defaultConfig {
         applicationId "com.quizapp.quiz_app"
-        minSdk flutter.minSdkVersion
-        targetSdk flutter.targetSdkVersion
+        minSdk flutterMinSdk
+        targetSdk flutterTargetSdk
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         ndk {
