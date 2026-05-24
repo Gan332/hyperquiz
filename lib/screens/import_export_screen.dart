@@ -212,6 +212,7 @@ class ImportExportScreen extends StatelessWidget {
         return;
       }
 
+      if (!context.mounted) return;
       final app = context.read<AppProvider>();
       final newQuestions = data.questions.map((q) => Question(
         subject: q.subject,
