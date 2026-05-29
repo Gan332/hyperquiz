@@ -163,12 +163,10 @@ class _HomeTab extends StatelessWidget {
           const SizedBox(height: 20),
           StaggeredFadeIn(
             index: 1,
-            child: Text(
-              'Quick Actions',
-              style: theme.textTheme.titleSmall?.copyWith(
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w600,
-              ),
+            child: _SectionHeader(
+              icon: Icons.flash_on_rounded,
+              title: 'Quick Actions',
+              theme: theme,
             ),
           ),
           const SizedBox(height: 12),
@@ -224,12 +222,10 @@ class _HomeTab extends StatelessWidget {
           const SizedBox(height: 24),
           StaggeredFadeIn(
             index: 4,
-            child: Text(
-              'Recent Activity',
-              style: theme.textTheme.titleSmall?.copyWith(
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w600,
-              ),
+            child: _SectionHeader(
+              icon: Icons.history_rounded,
+              title: 'Recent Activity',
+              theme: theme,
             ),
           ),
           const SizedBox(height: 12),
@@ -238,24 +234,38 @@ class _HomeTab extends StatelessWidget {
               index: 5,
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(32),
+                  padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
                   child: Center(
-                    child: Text(
-                      'No practice records yet.\nStart practicing to see your progress!',
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                    child: Column(
+                      children: [
+                        Icon(Icons.sports_score_outlined, size: 48, color: Colors.grey[300]),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No practice records yet',
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Start practicing to see your progress!',
+                          style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey[400]),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
             )
-          else
-            ...app.records.take(5).toList().asMap().entries.map((entry) {
+            else
+          ...app.records.take(5).toList().asMap().entries.map((entry) {
               return StaggeredFadeIn(
                 index: 5 + entry.key,
                 child: _RecordItem(record: entry.value),
               );
             }),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -336,6 +346,39 @@ class _ActionCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _SectionHeader extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final ThemeData theme;
+
+  const _SectionHeader({
+    required this.icon,
+    required this.title,
+    required this.theme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 4, bottom: 4),
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: Colors.grey[500]),
+          const SizedBox(width: 8),
+          Text(
+            title,
+            style: theme.textTheme.titleSmall?.copyWith(
+              color: Colors.grey[600],
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.3,
+            ),
+          ),
+        ],
       ),
     );
   }

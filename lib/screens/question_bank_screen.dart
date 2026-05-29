@@ -38,24 +38,26 @@ class _QuestionBankScreenState extends State<QuestionBankScreen> {
       ),
       body: Column(
         children: [
-          // Search bar
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search questions...',
-                prefixIcon: const Icon(Icons.search, size: 20),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Icon(Icons.search, size: 20, color: Colors.grey[400]),
+                ),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
                         icon: const Icon(Icons.clear, size: 18),
                         onPressed: () => setState(() => _searchQuery = ''),
                       )
                     : null,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               ),
               onChanged: (v) => setState(() => _searchQuery = v),
             ),
           ),
-          // Filters
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
@@ -89,16 +91,31 @@ class _QuestionBankScreenState extends State<QuestionBankScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 8),
-          // Count
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              '${questions.length} questions',
-              style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+            child: Row(
+              children: [
+                Text(
+                  '${questions.length} questions',
+                  style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                ),
+                if (_searchQuery.isNotEmpty || _subjectFilter != null || _typeFilter != null) ...[
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      _searchQuery = '';
+                      _subjectFilter = null;
+                      _typeFilter = null;
+                    }),
+                    child: Text(
+                      'Clear filters',
+                      style: TextStyle(fontSize: 12, color: theme.colorScheme.primary),
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          const SizedBox(height: 4),
           // List
           Expanded(
             child: AnimatedSwitcher(
@@ -109,11 +126,26 @@ class _QuestionBankScreenState extends State<QuestionBankScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.inbox_outlined, size: 64, color: Colors.grey[300]),
+                          Icon(Icons.inbox_outlined, size: 64, color: Colors.grey[200]),
                           const SizedBox(height: 16),
                           Text(
-                            'No questions found',
-                            style: TextStyle(color: Colors.grey[500]),
+                            _searchQuery.isNotEmpty || _subjectFilter != null || _typeFilter != null
+                                ? 'No questions match your filters'
+                                : 'No questions yet',
+                            style: TextStyle(
+                              color: Colors.grey[500],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            _searchQuery.isNotEmpty || _subjectFilter != null || _typeFilter != null
+                                ? 'Try adjusting your search or filters'
+                                : 'Tap + to add your first question',
+                            style: TextStyle(
+                              color: Colors.grey[400],
+                              fontSize: 13,
+                            ),
                           ),
                         ],
                       ),

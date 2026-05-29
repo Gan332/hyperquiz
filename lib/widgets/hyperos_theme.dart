@@ -28,6 +28,7 @@ class HyperOSTheme {
         ),
         color: Colors.white,
         surfaceTintColor: scheme.primary.withOpacity(0.05),
+        shadowColor: Colors.black.withOpacity(0.04),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 2,
@@ -49,6 +50,7 @@ class HyperOSTheme {
           borderSide: BorderSide(color: scheme.primary, width: 1.5),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
       ),
       chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(
@@ -75,6 +77,25 @@ class HyperOSTheme {
       sliderTheme: const SliderThemeData(
         overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
         thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+      ),
+      dividerTheme: DividerThemeData(
+        space: 1,
+        thickness: 0.5,
+        color: Colors.grey[200],
+      ),
+      segmentedButtonTheme: SegmentedButtonThemeData(
+        style: SegmentedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 4,
+      ),
+      scrollbarTheme: ScrollbarThemeData(
+        thickness: WidgetStatePropertyAll(4),
+        radius: const Radius.circular(2),
+        thumbColor: WidgetStatePropertyAll(Colors.grey[300]),
       ),
     );
   }
@@ -106,6 +127,7 @@ class HyperOSTheme {
         ),
         color: const Color(0xFF1E1E1E),
         surfaceTintColor: scheme.primary.withOpacity(0.08),
+        shadowColor: Colors.black.withOpacity(0.2),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 2,
@@ -127,6 +149,7 @@ class HyperOSTheme {
           borderSide: BorderSide(color: scheme.primary, width: 1.5),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
       ),
       chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(
@@ -153,6 +176,25 @@ class HyperOSTheme {
       sliderTheme: const SliderThemeData(
         overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
         thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+      ),
+      dividerTheme: DividerThemeData(
+        space: 1,
+        thickness: 0.5,
+        color: Colors.grey[700],
+      ),
+      segmentedButtonTheme: SegmentedButtonThemeData(
+        style: SegmentedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 4,
+      ),
+      scrollbarTheme: ScrollbarThemeData(
+        thickness: WidgetStatePropertyAll(4),
+        radius: const Radius.circular(2),
+        thumbColor: WidgetStatePropertyAll(Colors.grey[600]),
       ),
     );
   }

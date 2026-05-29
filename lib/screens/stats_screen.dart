@@ -119,15 +119,19 @@ class _StatsScreenState extends State<StatsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      'Daily Progress',
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey[700],
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Row(
+                    children: [
+                      Icon(Icons.trending_up_rounded, size: 18, color: Colors.grey[500]),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Daily Progress',
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[700],
+                        ),
                       ),
-                    ),
                     const Spacer(),
                     SegmentedButton<int>(
                       segments: const [
@@ -170,11 +174,21 @@ class _StatsScreenState extends State<StatsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'By Subject',
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey[700],
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Row(
+                    children: [
+                      Icon(Icons.bookmark_outline_rounded, size: 18, color: Colors.grey[500]),
+                      const SizedBox(width: 8),
+                      Text(
+                        'By Subject',
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      const Spacer(),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -205,11 +219,20 @@ class _StatsScreenState extends State<StatsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Subject Details',
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey[700],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Row(
+                      children: [
+                        Icon(Icons.table_chart_outlined, size: 18, color: Colors.grey[500]),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Subject Details',
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -274,11 +297,20 @@ class _StatsScreenState extends State<StatsScreen> {
             const SizedBox(height: 24),
             StaggeredFadeIn(
               index: 6,
-              child: Text(
-                'Recent Records',
-                style: theme.textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey[700],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Row(
+                  children: [
+                    Icon(Icons.history_rounded, size: 18, color: Colors.grey[500]),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Recent Records',
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
