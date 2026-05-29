@@ -56,12 +56,16 @@ class HyperOSTheme {
         ),
         side: BorderSide.none,
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        elevation: 8,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: scheme.primary,
-        unselectedItemColor: Colors.grey[500],
+      navigationBarTheme: NavigationBarThemeData(
+        elevation: 0,
+        indicatorColor: scheme.primary.withOpacity(0.15),
         backgroundColor: Colors.white,
+        indicatorShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        labelTextStyle: WidgetStatePropertyAll(
+          TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        ),
       ),
       dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(
@@ -130,12 +134,16 @@ class HyperOSTheme {
         ),
         side: BorderSide.none,
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        elevation: 8,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: scheme.primary,
-        unselectedItemColor: Colors.grey[600],
+      navigationBarTheme: NavigationBarThemeData(
+        elevation: 0,
+        indicatorColor: scheme.primary.withOpacity(0.2),
         backgroundColor: const Color(0xFF1E1E1E),
+        indicatorShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        labelTextStyle: WidgetStatePropertyAll(
+          TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        ),
       ),
       dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(

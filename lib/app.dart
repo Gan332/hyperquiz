@@ -11,19 +11,13 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final app = context.watch<AppProvider>();
 
-    return AnimatedTheme(
-      data: app.darkMode
-          ? HyperOSTheme.dark(app.themeColor)
-          : HyperOSTheme.light(app.themeColor),
-      duration: const Duration(milliseconds: 400),
-      child: MaterialApp(
-        title: 'QuizMaster',
-        debugShowCheckedModeBanner: false,
-        theme: HyperOSTheme.light(app.themeColor),
-        darkTheme: HyperOSTheme.dark(app.themeColor),
-        themeMode: app.darkMode ? ThemeMode.dark : ThemeMode.light,
-        home: const HomeScreen(),
-      ),
+    return MaterialApp(
+      title: 'QuizMaster',
+      debugShowCheckedModeBanner: false,
+      theme: HyperOSTheme.light(app.themeColor),
+      darkTheme: HyperOSTheme.dark(app.themeColor),
+      themeMode: app.darkMode ? ThemeMode.dark : ThemeMode.light,
+      home: const HomeScreen(),
     );
   }
 }
