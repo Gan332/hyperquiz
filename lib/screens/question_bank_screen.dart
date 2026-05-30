@@ -20,6 +20,7 @@ class _QuestionBankScreenState extends State<QuestionBankScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final app = context.watch<AppProvider>();
     final questions = _filterQuestions(app.questions);
 

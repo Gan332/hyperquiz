@@ -109,7 +109,7 @@ class TxtParser {
         continue;
       }
 
-      final sMatch = RegExp(r'^[Ss]ubject[:\s]+(.+)$').firstMatch(next, j == i + 1 ? 0 : null);
+      final sMatch = RegExp(r'^[Ss]ubject[:\s]+(.+)$').firstMatch(next);
       if (sMatch != null) {
         subject = sMatch.group(1)!.trim();
         j++;

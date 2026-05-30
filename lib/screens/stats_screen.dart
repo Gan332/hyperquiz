@@ -148,7 +148,8 @@ class _StatsScreenState extends State<StatsScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+              ),
+              const SizedBox(height: 12),
                 Card(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
